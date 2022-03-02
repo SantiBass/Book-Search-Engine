@@ -5,9 +5,9 @@ import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
 import {ApolloClient,
         InMemoryCache,
-        Apollo
-
-}
+        ApolloProvider,
+        createHttpLink
+      }from '@apo'
 function App() {
   return (
     <Router>
