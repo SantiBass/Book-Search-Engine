@@ -16,8 +16,8 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-   
     "apollo-server-express": "^3.6.3",
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "googleapis": "^95.0.0"
   }
 }
