@@ -18,12 +18,12 @@ const resolvers = {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
-
+​
       return { token, user };
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
+​
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
@@ -35,15 +35,16 @@ const resolvers = {
       return { token, user };
     },
     saveBook: async (parent, newBook, context) => {
+      console.log(context)
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { saveBook: bookData} },
+          { $push: { saveBook: {newBook}} },
           { new: true }
         );
-        return User;
+        return {updatedUser, newBook};
       }
-
+​
       throw new AuthenticationError('You need to be logged in!');
     },
     removeBook: async (parent, { bookId}, context) => {
@@ -59,5 +60,5 @@ const resolvers = {
     },
   },
 };
-
+​
 module.exports = resolvers;
