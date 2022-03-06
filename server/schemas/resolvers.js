@@ -38,7 +38,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { thoughts: thought._id } },
+          { $push: { saveBook: bookData} },
           { new: true }
         );
         return User;
@@ -53,7 +53,7 @@ const resolvers = {
           { $pull: { saveBook: { bookId} } },
           { new: true}
         );
-        return updatedThought;
+        return updatedUser;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
