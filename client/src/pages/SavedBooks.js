@@ -17,7 +17,7 @@ const SavedBooks = () => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
-      return false;
+      return false; 
     }
 
     try {
@@ -43,7 +43,7 @@ const SavedBooks = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedBooks.length
+          {userData.savedBooks?.length
             ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
             : 'You have no saved books!'}
         </h2>
