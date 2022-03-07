@@ -5,7 +5,7 @@ const path = require('path');
 const {typeDefs, resolvers} = require('./schemas');
 const {authMiddleware} = require('./utils/auth');
 const db = require('./config/connection');
-
+// const routes = require('./routes')
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -30,9 +30,9 @@ app.use(express.json());
 //   app.use(express.static(path.join(__dirname, '../client/build')));
 // }
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 db.once('open', () => {
   app.listen(PORT, () => {
