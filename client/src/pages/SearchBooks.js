@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { SAVE_BOOK} from  '../utils/mutations'
-import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
   // create state for holding returned google api data
@@ -44,6 +44,7 @@ const SearchBooks = () => {
         description: book.volumeInfo.description,
         image: book.volumeInfo.imageLinks?.thumbnail || '',
       }));
+      
    setSearchedBooks(bookData);
       setSearchInput('');
     } catch (err) {
@@ -60,6 +61,9 @@ const SearchBooks = () => {
       return false;
     }
     try {
+      // const { data } = await saveBook({
+      //   variables: { bookData: { ...bookToSave } },
+      // });
       console.log({...bookToSave})
       const response = await saveBook({variables:{newBook: {...bookToSave}}});
        console.log(response)
@@ -67,6 +71,7 @@ const SearchBooks = () => {
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
       console.error(err);
+      
     }
   };
   return (
