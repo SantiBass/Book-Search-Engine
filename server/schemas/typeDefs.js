@@ -30,7 +30,14 @@ input InputBook {
     image: String
     link: String
 }
-
+input savedBook {
+    authors: [String]
+    description: String
+    bookId: String    
+    image: String
+    link: String
+    title: String
+  }
 type Query {
     me: User
 }
