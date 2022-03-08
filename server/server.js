@@ -39,3 +39,6 @@ db.once('open', () => {
     console.log(`API server running on port ${PORT}!`);
   });
 });
+// 1. When I click on the book to save
+// 2. When I send a request to edit a user (and add to their saved books)
+// 3. When I ask for the savedBooks data of myself on the SavedBooks.js page

@@ -61,8 +61,8 @@ const SearchBooks = () => {
     }
     try {
       console.log({...bookToSave})
-       await saveBook({variables:{newBook: {...bookToSave}}});
-      console.log("response")
+      const response = await saveBook({variables:{newBook: {...bookToSave}}});
+       console.log(response)
     // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
@@ -102,7 +102,7 @@ const SearchBooks = () => {
             : 'Search for a book to begin'}
         </h2>
         <CardColumns>
-          {searchedBooks?.map((book) => {
+          {searchedBooks.map((book) => {
             return (
               <Card key={book.bookId} border='dark'>
                 {book.image ? (

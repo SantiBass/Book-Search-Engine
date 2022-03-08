@@ -41,7 +41,8 @@ if (!user) {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedBooks: args.input} },
+          { $addToSet: { savedBooks: args.newBook
+          } },
           { new: true }
         );
         return {updatedUser};
